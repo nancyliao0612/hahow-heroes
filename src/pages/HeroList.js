@@ -1,10 +1,13 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { Route, Switch, Link } from "react-router-dom";
 import HeroCard from "../components/HeroCard";
 import styled from "styled-components";
+import HeroProfile from "./HeroProfile";
 
 function HeroList() {
   const [heroList, setHeroList] = useState([]);
+  const [isHeroClicked, setIsHeroClicked] = useState(false);
 
   const getHeroes = async () => {
     const url = "https://hahow-recruit.herokuapp.com/heroes";
@@ -22,14 +25,33 @@ function HeroList() {
   }, []);
 
   const herocard = heroList.map((hero) => {
-    return <HeroCard {...hero} key={hero.id} />;
+    return (
+      <Link
+        to={`/heroes/${hero.id}`}
+        key={hero.id}
+        onClick={() => setIsHeroClicked(true)}
+      >
+        <HeroCard {...hero} />
+      </Link>
+    );
   });
 
-  return <Wrapper>{herocard}</Wrapper>;
+  return (
+    <>
+      <Wrapper>{herocard}</Wrapper>
+      {isHeroClicked && (
+        <Switch>
+          <Route path={`/heroes/:heroId`}>
+            <HeroProfile />
+          </Route>
+        </Switch>
+      )}
+    </>
+  );
 }
 
 const Wrapper = styled.section`
-  // border: solid 1px;
+  border: solid 1px;
   margin-top: 50px;
   padding: 15px;
   display: grid;

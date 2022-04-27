@@ -30,3 +30,8 @@ body {
   font-family: "Noto Sans TC", sans-serif;
   color: var(--clr-primary-1);
 }
+
+a {
+  text-decoration: none;
+  color: unset;
+}
