@@ -25,6 +25,10 @@ Global Styles
   box-sizing: border-box;
 }
 
+html {
+  font-size: 10px;
+}
+
 body {
   margin: 0 200px;
   font-family: "Noto Sans TC", sans-serif;

@@ -1,29 +1,34 @@
 import styled from "styled-components";
-import { useState } from "react";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function HeroCard(props) {
-  const { id, name, image } = props;
-  const [isSelected, setIsSelected] = useState(false);
-
-  function handleClick() {
-    console.log("clicked");
-  }
+  const { id, name, image, highLight, highLightCard } = props;
 
   return (
-    <Wrapper onClick={handleClick}>
-      <img src={image} alt="hero-image" />
-      <h3>{name}</h3>
+    <Wrapper>
+      <Link
+        to={`/heroes/${id}`}
+        onClick={() => highLightCard(id)}
+        className={highLight === id ? "selected" : null}
+      >
+        <img src={image} alt={image} />
+        <h3>{name}</h3>
+      </Link>
     </Wrapper>
   );
 }
 
 const Wrapper = styled.div`
-  border: solid 1px;
-  padding: 5px;
-  background: var(--clr-primary-3);
+  // border: solid 1px;
   cursor: pointer;
 
+  a {
+    display: block;
+    padding: 0.5rem;
+    background-color: var(--clr-primary-3);
+    height: 100%;
+    width: 100%;
+  }
   img {
     width: 100%;
     height: 70%;
@@ -32,7 +37,13 @@ const Wrapper = styled.div`
   h3 {
     text-align: center;
     height: 30%;
-    padding: 20px 0;
+    padding: 2rem 0;
+    font-size: 1.8rem;
+  }
+  .selected {
+    // border: solid 2px red;
+    background-color: var(--clr-primary-1);
+    color: var(--clr-primary-2);
   }
 `;
 
