@@ -4,14 +4,21 @@ import { useHeroesContext } from "../context/hero_context";
 
 function HeroCard(props) {
   const { id, name, image } = props;
-  const { highLightCard, hero_highlight } = useHeroesContext();
+  const { highLightCard, hero_highlight, isPointChanged } = useHeroesContext();
 
   return (
     <Wrapper>
       <Link
         to={`/heroes/${id}`}
         onClick={() => highLightCard(id)}
-        className={hero_highlight === id ? "selected" : null}
+        // if an user changes hero's ability, then the user needs to save her/his modification before switching to another hero's profile
+        className={
+          hero_highlight === id
+            ? "selected"
+            : isPointChanged
+            ? "disabled"
+            : null
+        }
       >
         <img src={image} alt={image} />
         <h3>{name}</h3>
@@ -46,6 +53,10 @@ const Wrapper = styled.div`
     // border: solid 2px red;
     background-color: var(--clr-primary-1);
     color: var(--clr-primary-2);
+  }
+  .disabled {
+    opacity: 30%;
+    pointer-events: none;
   }
 `;
 
