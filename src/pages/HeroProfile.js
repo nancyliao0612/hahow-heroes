@@ -12,7 +12,7 @@ function HeroProfile() {
 
   const fetchSingleHero = async () => {
     try {
-      const response = await axios(url);
+      const response = await axios.get(url);
       const heroData = response.data;
       setProfile(heroData);
       console.log(heroData);
@@ -26,7 +26,6 @@ function HeroProfile() {
   }, [heroId]);
 
   const { str, int, agi, luk } = profile;
-  let totalPoints = str + int + agi + luk;
 
   // Increase single hero's point
   function addPoints(e) {
@@ -51,14 +50,24 @@ function HeroProfile() {
       setRemainPoint((prevRemainPoint) => prevRemainPoint + 1);
     }
   }
-  console.log(profile);
 
-  // count remain points
-  console.log(totalPoints);
+  const handleSave = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.patch(url, profile, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      setProfile(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <Wrapper>
-      <form action="">
+      <form onSubmit={handleSave}>
         <div>
           <span>STR</span>
           <button type="button" onClick={addPoints} name="str" data-point={str}>
@@ -121,9 +130,7 @@ function HeroProfile() {
         </div>
         <section>
           <p>剩餘點數：{remainPoint}</p>
-          <button type="submit" className="submit-btn">
-            儲存
-          </button>
+          <button className="submit-btn">儲存</button>
         </section>
       </form>
     </Wrapper>
