@@ -1,15 +1,17 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { useHeroesContext } from "../context/hero_context";
 
 function HeroCard(props) {
-  const { id, name, image, highLight, highLightCard } = props;
+  const { id, name, image } = props;
+  const { highLightCard, hero_highlight } = useHeroesContext();
 
   return (
     <Wrapper>
       <Link
         to={`/heroes/${id}`}
         onClick={() => highLightCard(id)}
-        className={highLight === id ? "selected" : null}
+        className={hero_highlight === id ? "selected" : null}
       >
         <img src={image} alt={image} />
         <h3>{name}</h3>

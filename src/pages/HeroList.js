@@ -1,45 +1,14 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
 import { Route, Switch } from "react-router-dom";
 import HeroCard from "../components/HeroCard";
 import styled from "styled-components";
 import HeroProfile from "./HeroProfile";
+import { useHeroesContext } from "../context/hero_context";
 
 function HeroList() {
-  const [heroList, setHeroList] = useState([]);
-  const [isHeroClicked, setIsHeroClicked] = useState(false);
-  const [highLight, setHighLight] = useState("");
+  const { hero_lists, isHeroClicked } = useHeroesContext();
 
-  const getHeroes = async () => {
-    const url = "https://hahow-recruit.herokuapp.com/heroes";
-    try {
-      const response = await axios(url);
-      const heroes = response.data;
-      setHeroList(heroes);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  useEffect(() => {
-    getHeroes();
-  }, []);
-
-  function highLightCard(id) {
-    setHighLight(id);
-    setIsHeroClicked(true);
-    console.log(id);
-  }
-
-  const herocard = heroList.map((hero) => {
-    return (
-      <HeroCard
-        {...hero}
-        key={hero.id}
-        highLight={highLight}
-        highLightCard={highLightCard}
-      />
-    );
+  const herocard = hero_lists.map((hero) => {
+    return <HeroCard {...hero} key={hero.id} />;
   });
 
   return (
