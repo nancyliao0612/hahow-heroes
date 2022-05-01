@@ -1,5 +1,5 @@
 import React, { useEffect, useContext, useReducer } from "react";
-import reducer from "../reducers/hero_reducer";
+import reducer from "../reducer/hero_reducer";
 import axios from "axios";
 
 const HeroContext = React.createContext();

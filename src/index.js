@@ -5,7 +5,10 @@ import "./index.css";
 import HeroList from "./pages/HeroList.js";
 import { HeroProvider } from "./context/hero_context";
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
+const root = ReactDOM.createRoot(
+  document.getElementById("root"),
+  document.getElementsByTagName("body")[0].setAttribute("id", "body")
+);
 root.render(
   <HeroProvider>
     <BrowserRouter>

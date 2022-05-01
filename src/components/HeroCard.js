@@ -11,7 +11,7 @@ function HeroCard(props) {
       <Link
         to={`/heroes/${id}`}
         onClick={() => highLightCard(id)}
-        // if an user changes hero's ability, then the user needs to save her/his modification before switching to another hero's profile
+        // if an user changes hero's ability point, then the user needs to save his/her modification before switching to another hero's profile
         className={
           hero_highlight === id
             ? "selected"
@@ -20,7 +20,9 @@ function HeroCard(props) {
             : null
         }
       >
-        <img src={image} alt={image} />
+        <div>
+          <img src={image} alt={image} />
+        </div>
         <h3>{name}</h3>
       </Link>
     </Wrapper>
@@ -28,20 +30,36 @@ function HeroCard(props) {
 }
 
 const Wrapper = styled.div`
-  // border: solid 1px;
   cursor: pointer;
 
   a {
     display: block;
-    padding: 0.5rem;
     background-color: var(--clr-primary-3);
+    box-shadow: 2px 0px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    border: solid 1px #ddd;
+    padding: 1.5rem;
     height: 100%;
     width: 100%;
   }
+  a:hover {
+    color: var(--clr-primary-1);
+    img {
+      filter: saturate(0.95);
+      transform: scale(1.1);
+      transition: all 0.25s ease;
+    }
+  }
+  div {
+    overflow: hidden;
+    border-top-right-radius: 15px;
+    border-top-left-radius: 15px;
+    height: 70%;
+  }
   img {
     width: 100%;
-    height: 70%;
     object-fit: cover;
+    filter: saturate(0.6);
   }
   h3 {
     text-align: center;
@@ -50,9 +68,18 @@ const Wrapper = styled.div`
     font-size: 1.8rem;
   }
   .selected {
-    // border: solid 2px red;
-    background-color: var(--clr-primary-1);
-    color: var(--clr-primary-2);
+    :hover {
+      color: #fff;
+    }
+    color: #fff;
+    background: linear-gradient(
+      to top,
+      #414345,
+      #232526
+    ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    img {
+      -webkit-filter: saturate(0.95);
+    }
   }
   .disabled {
     opacity: 30%;
