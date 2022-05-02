@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { useHeroesContext } from "../context/hero_context";
 import Loading from "../components/Loading";
 import success from "../components/Message";
-import Button from "../components/Button";
+import PointCounter from "../components/PointCounter";
 
 function HeroProfile() {
   const { heroId } = useParams();
@@ -31,9 +31,8 @@ function HeroProfile() {
     <Wrapper>
       <form onSubmit={(e) => handleSave(e, url, hero_ability)}>
         <div>
-          {Object.keys(hero_ability).map((key, index) => {
-            const value = hero_ability[key];
-            return <Button value={value} key={index} point={key} />;
+          {Object.entries(hero_ability).map(([key, value], index) => {
+            return <PointCounter value={value} key={index} point={key} />;
           })}
         </div>
         <section>

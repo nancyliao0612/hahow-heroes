@@ -1,7 +1,7 @@
 import { useHeroesContext } from "../context/hero_context";
 import styled from "styled-components";
 
-function Button({ value, point }) {
+function PointCounter({ value, point }) {
   const { addPoints, minusPoints, remain_point } = useHeroesContext();
 
   return (
@@ -30,7 +30,7 @@ function Button({ value, point }) {
   );
 }
 
-export default Button;
+export default PointCounter;
 
 const Wrapper = styled.div`
   margin-bottom: 2rem;
