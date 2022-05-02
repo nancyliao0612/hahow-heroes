@@ -1,5 +1,5 @@
-@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500&display=swap");
 @import "~antd/dist/antd.css";
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500&display=swap");
 
 /*
 =============== 
@@ -17,7 +17,6 @@ Variables
 Global Styles
 ===============
 */
-
 *,
 ::after,
 ::before {
@@ -31,24 +30,26 @@ html {
 }
 
 #body {
-  /* margin: 0 200px; */
   font-family: "Noto Sans TC", sans-serif;
   color: var(--clr-primary-1);
   letter-spacing: 0.1rem;
 }
 
 a {
-  text-decoration: none;
+  /* override the original Ant Design's blue link color */
   color: var(--clr-primary-1);
-}
-
-.section {
-  padding: 5rem 0;
-}
-.section-center {
-  margin: 0 auto;
 }
 
 h3 {
   color: unset;
+}
+
+.ant-spin-dot-item {
+  /* change the color of the Ant Design's Spin component */
+  background-color: var(--clr-primary-1);
+}
+
+.ant-spin-spinning {
+  display: flex;
+  justify-content: center;
 }

@@ -37,7 +37,6 @@ const Wrapper = styled.section`
   grid-gap: 2rem;
   grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
   grid-auto-rows: 25rem;
-  // background-color: var(--clr-primary-2);
   padding: 0 270px;
 
   @media screen and (max-width: 768px) {

@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { useHeroesContext } from "../context/hero_context";
 import Loading from "../components/Loading";
 import success from "../components/Message";
+import Button from "../components/Button";
 
 function HeroProfile() {
   const { heroId } = useParams();
@@ -12,8 +13,6 @@ function HeroProfile() {
     hero_ability,
     hero_ability_loading,
     isPointChanged,
-    addPoints,
-    minusPoints,
     remain_point,
     handleSave,
   } = useHeroesContext();
@@ -34,30 +33,7 @@ function HeroProfile() {
         <div>
           {Object.keys(hero_ability).map((key, index) => {
             const value = hero_ability[key];
-            return (
-              <div key={index}>
-                <span>{key}</span>
-                <button
-                  type="button"
-                  onClick={addPoints}
-                  name={key}
-                  data-point={value}
-                  disabled={remain_point === 0 ? true : false}
-                >
-                  +
-                </button>
-                <span>{value}</span>
-                <button
-                  type="button"
-                  onClick={minusPoints}
-                  name={key}
-                  data-point={value}
-                  disabled={value === 0 ? true : false}
-                >
-                  -
-                </button>
-              </div>
-            );
+            return <Button value={value} key={index} point={key} />;
           })}
         </div>
         <section>
@@ -86,6 +62,7 @@ const Wrapper = styled.section`
   background-color: var(--clr-primary-2);
   border-radius: 1.5rem;
   position: relative;
+  min-width: 350px;
 
   form {
     display: flex;
@@ -95,26 +72,8 @@ const Wrapper = styled.section`
     flex: 3;
   }
 
-  div {
-    margin-bottom: 2rem;
-  }
   div:last-of-type {
     margin-bottom: 0;
-  }
-
-  span {
-    display: inline-block;
-    text-align: center;
-    text-transform: capitalize;
-  }
-
-  span:nth-child(1) {
-    margin-right: 3rem;
-    width: 3rem;
-  }
-
-  span:last-of-type {
-    width: 3rem;
   }
 
   button:nth-child(n) {
@@ -154,41 +113,15 @@ const Wrapper = styled.section`
     form {
       flex-direction: column;
       justify-content: center;
-      align-item: center;
     }
     section {
       align-self: initial;
       margin-top: 2rem;
     }
   }
-
   @media screen and (max-width: 880px) {
     margin: 0 10%;
     margin-top: 2rem;
-    font-size: 1.4rem;
-
-    button:nth-child(n) {
-      width: 3rem;
-      height: 3rem;
-      font-size: 1.4rem;
-    }
-
-    form {
-      flex-direction: column;
-      justify-content: center;
-      min-width: 300px;
-    }
-
-    section {
-      width: 100%;
-      margin-top: 3rem;
-    }
-
-    section .submit-btn {
-      font-size: 1.4rem;
-      margin: 0;
-      width: 10rem;
-    }
   }
 `;
 

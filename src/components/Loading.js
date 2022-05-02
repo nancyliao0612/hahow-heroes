@@ -1,11 +1,17 @@
 import { Spin } from "antd";
+import styled from "styled-components";
 
 const Loading = () => {
   return (
-    <div className="section section-center">
+    <Wrapper>
       <Spin />
-    </div>
+    </Wrapper>
   );
 };
 
 export default Loading;
+
+const Wrapper = styled.div`
+  padding-top: 5rem;
+  align-items: center;
+`;

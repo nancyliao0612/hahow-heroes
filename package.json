@@ -41,5 +41,8 @@
   },
   "theme": {
     "primary-color": "black"
+  },
+  "devDependencies": {
+    "less": "^4.1.2"
   }
 }

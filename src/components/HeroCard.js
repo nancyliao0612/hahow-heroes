@@ -72,13 +72,9 @@ const Wrapper = styled.div`
       color: #fff;
     }
     color: #fff;
-    background: linear-gradient(
-      to top,
-      #414345,
-      #232526
-    ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to top, #414345, #232526);
     img {
-      -webkit-filter: saturate(0.95);
+      filter: saturate(0.95);
     }
   }
   .disabled {
