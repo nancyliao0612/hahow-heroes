@@ -54,15 +54,14 @@ function HeroProfile() {
 }
 
 const Wrapper = styled.section`
-  // border: solid 1px;
   margin: 0 27rem;
   margin-top: 2rem;
-  padding: 3rem 3rem;
+  padding: 3rem 5rem;
   font-size: 1.8rem;
   background-color: var(--clr-primary-2);
   border-radius: 1.5rem;
   position: relative;
-  min-width: 350px;
+  min-width: 35rem;
 
   form {
     display: flex;

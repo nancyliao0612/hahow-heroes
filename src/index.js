@@ -5,11 +5,7 @@ import "./index.css";
 import HeroList from "./pages/HeroList.js";
 import { HeroProvider } from "./context/hero_context";
 
-const root = ReactDOM.createRoot(
-  document.getElementById("root"),
-  // To solve the problem that Ant Design overrides existing CSS in the project by increasing the specificity of body element
-  document.getElementsByTagName("body")[0].setAttribute("id", "body")
-);
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <HeroProvider>
     <BrowserRouter>

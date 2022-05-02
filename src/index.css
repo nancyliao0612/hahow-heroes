@@ -29,14 +29,13 @@ html {
   font-size: 10px;
 }
 
-#body {
+body {
   font-family: "Noto Sans TC", sans-serif;
   color: var(--clr-primary-1);
   letter-spacing: 0.1rem;
 }
 
 a {
-  /* override the original Ant Design's blue link color */
   color: var(--clr-primary-1);
 }
 
