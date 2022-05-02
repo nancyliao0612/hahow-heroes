@@ -35,7 +35,7 @@ const Wrapper = styled.section`
   padding: 1.5rem;
   display: grid;
   grid-gap: 2rem;
-  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(32rem, 1fr));
   grid-auto-rows: 25rem;
   padding: 0 27rem;
 

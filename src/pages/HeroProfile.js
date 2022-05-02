@@ -61,7 +61,7 @@ const Wrapper = styled.section`
   background-color: var(--clr-primary-2);
   border-radius: 1.5rem;
   position: relative;
-  min-width: 35rem;
+  min-width: 33rem;
 
   form {
     display: flex;
@@ -119,6 +119,7 @@ const Wrapper = styled.section`
     }
   }
   @media screen and (max-width: 880px) {
+    padding: 2rem;
     margin: 0 10%;
     margin-top: 2rem;
   }
